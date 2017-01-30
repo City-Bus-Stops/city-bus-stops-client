@@ -1,0 +1,20 @@
+{
+  "map": {
+    "config": {
+      "center": [
+        53.685627,
+        23.837414
+      ],
+      "zoomControl": true,
+      "zoom": 13,
+      "maxZoom": 18,
+      "scrollwheel": false
+    },
+    "tileLayer": {
+      "uri": "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      "params": {
+        "minZoom": 11
+      }
+    }
+  }
+}
