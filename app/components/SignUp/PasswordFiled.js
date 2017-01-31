@@ -5,14 +5,14 @@ class PasswordFiled extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
+      checked: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     this.setState({
-      checked: !this.state.checked,
+      checked: !this.state.checked
     });
   }
 

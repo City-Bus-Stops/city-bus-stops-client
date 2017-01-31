@@ -26,7 +26,7 @@ const OwnerPage = ({ secretData }) => {
 };
 
 OwnerPage.propTypes = {
-  secretData: PropTypes.string.isRequired,
+  secretData: PropTypes.string.isRequired
 };
 
 export default OwnerPage;

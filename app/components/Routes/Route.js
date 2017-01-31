@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Card, Grid, Button, Icon, Accordion, Header } from 'semantic-ui-react';
-import _ from 'lodash';
+import { Card, Grid, Button, Icon, Accordion } from 'semantic-ui-react';
 
 import BusStopList from './BusStopsList';
 
@@ -8,38 +7,41 @@ const Route = ({ arrivalTime, From, To, points, changeMapState }) => (
   <Grid.Column>
     <Card
       fluid
-      color="teal"
+      color="blue"
     >
-      <Card.Content
-        header={`${_.head(points).name}: ${arrivalTime}`}
-      />
+      <Card.Content>
+         <Card.Header>
+           {points[0].name}: {arrivalTime}
+           <Button
+             size="medium"
+             icon
+             basic
+             circular
+             floated="right"
+             onClick={() => {
+               changeMapState();
+             }}
+           >
+             <Icon name="street view" color="teal" />
+           </Button>
+        </Card.Header>
+      </Card.Content>
       <Card.Content
         meta={
-          <p>{`${From} - ${To}`}
-            <Button
-              size="medium"
-              icon
-              basic
-              circular
-              floated="right"
-              onClick={() => {
-                changeMapState();
-              }}
-            >
-              <Icon name="street view" color="teal" />
-            </Button>
+          <p>
+            {`${From} - ${To}`}
           </p>
         }
       />
       <Card.Content extra className="card-extra-component">
         <Accordion>
           <Accordion.Title>
-            <Icon
-              name="settings"
-            />
-            <Header as="h5" icon size="tiny">
+            <a>
+              <Icon
+                name="bus"
+              />
               Show bus stops
-            </Header>
+            </a>
           </Accordion.Title>
           <Accordion.Content>
             <Card.Content
@@ -55,7 +57,7 @@ const Route = ({ arrivalTime, From, To, points, changeMapState }) => (
 Route.propTypes = {
   arrivalTime: PropTypes.string.isRequired,
   From: PropTypes.string.isRequired,
-  To: PropTypes.string.isRequired,
+  To: PropTypes.string.isRequired
 };
 
 export default Route;

@@ -18,7 +18,7 @@ const InputFiled = ({ input, label, meta: { touched, error } }) => (
 InputFiled.propTypes = {
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  meta: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired
 };
 
 export default InputFiled;

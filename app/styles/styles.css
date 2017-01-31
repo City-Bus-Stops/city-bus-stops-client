@@ -12,7 +12,21 @@ body, html {
   height: 100%;
 }
 
-.card-extra-component {
-  padding: 0;
+@media (max-width: 576px) {
+  .leaflet-container {
+    height: 83vh;
+    width: 100vw;
+  }
 }
 
+@media (min-width: 576px) {
+  .leaflet-container {
+    height: 90.5vh;
+    width: 100vw;
+  }
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}

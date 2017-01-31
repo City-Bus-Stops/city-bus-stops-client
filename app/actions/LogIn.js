@@ -6,7 +6,7 @@ export const logIn = (email, password) => {
     dispatch({
       type: consts.POST_LOG_IN_DATA,
       email,
-      password,
+      password
     });
     api.LogIn({ email, password })
       .then((response) => {
@@ -18,20 +18,20 @@ export const logIn = (email, password) => {
             type: consts.LOG_IN_SUCCESS,
             username: response.user.name,
             token: response.token,
-            title: response.title,
+            title: response.title
           })
         : dispatch({
           type: consts.LOG_IN_FAILURE,
           title: response.title,
-          errors: response.message,
+          errors: response.message
         });
       })
       .catch((err) => {
         dispatch({
           type: consts.LOG_IN_FAILURE,
           errors: {
-            error: err.message,
-          },
+            error: err.message
+          }
         });
       });
   };
@@ -40,7 +40,7 @@ export const logIn = (email, password) => {
 export const logOut = () => {
   return (dispatch) => {
     dispatch({
-      type: consts.LOG_OUT,
+      type: consts.LOG_OUT
     });
   };
 };

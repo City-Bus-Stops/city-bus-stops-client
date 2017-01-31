@@ -15,7 +15,7 @@ const configureStore = () => {
     signUpSuccess,
     logIn,
     errorMiddleware,
-    loading,
+    loading
   ];
 
   return createStore(

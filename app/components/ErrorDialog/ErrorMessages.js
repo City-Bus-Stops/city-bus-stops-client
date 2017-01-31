@@ -16,7 +16,7 @@ const Messages = ({ messages }) => (
 );
 
 Messages.propTypes = {
-  messages: PropTypes.object.isRequired,
+  messages: PropTypes.object.isRequired
 };
 
 export default Messages;

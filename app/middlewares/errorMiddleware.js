@@ -13,7 +13,7 @@ const errorMiddleware = store => next => (action) => {
       store.dispatch({
         type: consts.ADD_ERROR_MESSAGE,
         errorType: action.type,
-        errors: action.errors,
+        errors: action.errors
       });
       return next(action);
     default:

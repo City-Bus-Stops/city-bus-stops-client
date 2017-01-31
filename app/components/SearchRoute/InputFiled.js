@@ -10,16 +10,15 @@ const InputFiled = ({ input, label, meta: { touched, error }, personLocation }) 
       placeholder={label}
       {...input}
     >
+    <Button
+      size="small"
+      icon
+      basic
+      onClick={() => { personLocation(input); }}
+    >
+      <Icon name="marker" color="red" size="large" />
+    </Button>
       <input />
-      <Button
-        size="small"
-        icon
-        basic
-        circular
-        onClick={() => { personLocation(input); }}
-      >
-        <Icon name="marker" color="green" />
-      </Button>
     </Input>
     {touched && error &&
     <Label basic color="red" pointing>{error}</Label>
@@ -30,7 +29,7 @@ const InputFiled = ({ input, label, meta: { touched, error }, personLocation }) 
 InputFiled.propTypes = {
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  meta: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired
 };
 
 export default InputFiled;

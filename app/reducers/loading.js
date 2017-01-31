@@ -1,6 +1,6 @@
 import * as consts from '../src/consts';
 const initialState = {
-  isLoading: false,
+  isLoading: false
 };
 
 function loading(state = initialState, action) {
@@ -8,12 +8,12 @@ function loading(state = initialState, action) {
     case consts.OPEN_LOADING:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
     case consts.CLOSE_LOADING:
       return {
         ...state,
-        isLoading: false,
+        isLoading: false
       };
     default:
       return state;

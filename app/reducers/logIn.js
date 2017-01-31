@@ -6,16 +6,16 @@ function logIn(state = {}, action) {
       return {
         ...state,
         email: action.email,
-        password: action.password,
+        password: action.password
       };
     case consts.LOG_IN_SUCCESS:
       return {
         ...state,
-        username: action.username,
+        username: action.username
       };
     case consts.LOG_IN_FAILURE:
       return {
-        ...state,
+        ...state
       };
     case consts.LOG_OUT:
       return {};

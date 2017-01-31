@@ -1,7 +1,7 @@
 import * as consts from '../src/consts';
 const initialState = {
   ErrorMessages: {},
-  DialogFlag: false,
+  DialogFlag: false
 };
 
 function getError(state = initialState, action) {
@@ -11,7 +11,7 @@ function getError(state = initialState, action) {
         ...state,
         errorType: action.errorType,
         ErrorMessages: Object.assign({}, state.ErrorMessages, action.errors),
-        DialogFlag: true,
+        DialogFlag: true
       };
     case consts.OPEN_DIALOG:
       return { ...state, DialogFlag: true };

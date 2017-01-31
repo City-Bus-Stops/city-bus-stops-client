@@ -23,13 +23,13 @@ class ErrorDialog extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ErrorDialogState: state.getError,
+    ErrorDialogState: state.getError
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ErrorDialogActions: bindActionCreators(errorActions, dispatch),
+    ErrorDialogActions: bindActionCreators(errorActions, dispatch)
   };
 };
 

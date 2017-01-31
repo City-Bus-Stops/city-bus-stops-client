@@ -15,15 +15,17 @@ class SearchRoute extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMap: false,
+      showMap: false
     };
     this.getGeoJsonById = this.getGeoJsonById.bind(this);
     this.getInfo = this.getInfo.bind(this);
     this.changeMapState = this.changeMapState.bind(this);
+    this.personLocation = this.personLocation.bind(this);
+    this.searchRoute = this.searchRoute.bind(this);
   }
 
   getGeoJsonById() {
-    /*const routeId = this.props.params.routeId;
+    /* const routeId = this.props.params.routeId;
     const routes = this.props.SearchRouteState.routes;
     return _.find(routes, ['id', routeId]).geoJson;*/
     return geoJson;
@@ -52,7 +54,7 @@ class SearchRoute extends Component {
 
   changeMapState() {
     this.setState({
-      showMap: !this.state.showMap,
+      showMap: !this.state.showMap
     });
   }
 
@@ -65,14 +67,14 @@ class SearchRoute extends Component {
         {
           _.isEqual(showMap, true) ?
             <MapComponent
-              geoJson={this.getGeoJsonById()}
+              geoJson={geoJson}
               getInfo={this.getInfo}
               changeMapState={this.changeMapState}
             /> :
             <div>
               <InputForm
-                personLocation={this.personLocation.bind(this)}
-                searchRoute={this.searchRoute.bind(this)}
+                personLocation={this.personLocation}
+                searchRoute={this.searchRoute}
               />
               {
                 From && To && routes &&
@@ -92,13 +94,13 @@ class SearchRoute extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    SearchRouteState: state.searchRoute,
+    SearchRouteState: state.searchRoute
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    SearchRoutes: bindActionCreators({ ...actions, ...errorActions }, dispatch),
+    SearchRoutes: bindActionCreators({ ...actions, ...errorActions }, dispatch)
   };
 };
 

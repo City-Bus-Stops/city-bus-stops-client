@@ -1,69 +1,44 @@
-import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import React from 'react';
 import { Menu } from 'semantic-ui-react';
 
 import Auth from '../../src/utils/Auth';
 
 import UserSettings from './UserSettings';
 
-class AppMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: Auth.getUserName(),
-    };
-    this.handleItemClick = this.handleItemClick.bind(this);
-  }
+const MenuComponent = ({ username, handleItemClick }) => (
+  <Menu size="huge" borderless>
+    <Menu.Item
+      content="React App"
+      onClick={() => {
+        handleItemClick('/');
+      }}
+    />
+    {
+      Auth.isUserAuthenticated() ?
+        <Menu.Menu position="right">
+          <Menu.Item>
+            <UserSettings
+              username={username}
+              handleItemClick={handleItemClick}
+            />
+          </Menu.Item>
+        </Menu.Menu> :
+        <Menu.Menu position="right">
+          <Menu.Item
+            content="Log in"
+            onClick={() => {
+              handleItemClick('/login');
+            }}
+          />
+          <Menu.Item
+            content="Sign Up"
+            onClick={() => {
+              handleItemClick('/signup');
+            }}
+          />
+        </Menu.Menu>
+    }
+  </Menu>
+);
 
-  handleItemClick(path) {
-    browserHistory.push(path);
-    this.setState({ activeItem: path });
-  }
-
-  render() {
-    const { activeItem, username } = this.state;
-
-    return (
-      <Menu pointing size="massive">
-        <Menu.Item
-          active={activeItem === '/'}
-          content="React App"
-          onClick={() => {
-            this.handleItemClick('/');
-          }}
-        />
-        {
-          Auth.isUserAuthenticated() ?
-            <Menu.Menu position="right">
-              <Menu.Item>
-                <UserSettings
-                  username={username}
-                  handleClick={() => {
-                    this.handleItemClick('/logout');
-                  }}
-                />
-              </Menu.Item>
-            </Menu.Menu> :
-            <Menu.Menu position="right">
-              <Menu.Item
-                active={activeItem === '/login'}
-                content="Log in"
-                onClick={() => {
-                  this.handleItemClick('/login');
-                }}
-              />
-              <Menu.Item
-                active={activeItem === '/signup'}
-                content="Sign Up"
-                onClick={() => {
-                  this.handleItemClick('/signup');
-                }}
-              />
-            </Menu.Menu>
-        }
-      </Menu>
-    );
-  }
-}
-
-export default AppMenu;
+export default MenuComponent;

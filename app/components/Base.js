@@ -1,19 +1,15 @@
 import React from 'react';
 
 import ErrorDialog from '../containers/ErrorDialog/ErrorDialog';
-import AppMenu from './Menu/Menu';
+import AppMenu from '../containers/Menu/Menu';
 import Loading from '../containers/Loading/Loading';
 
 const Base = ({ ...props }) => (
-  <div>
+<div>
     <AppMenu />
-    <div>
-      <div className="uk-container">
-        {props.children}
-      </div>
-      <ErrorDialog />
-      <Loading />
-    </div>
+    {props.children}
+    <ErrorDialog />
+    <Loading />
   </div>
 );
 

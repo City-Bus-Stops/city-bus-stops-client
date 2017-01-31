@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import L from 'leaflet';
-import { Sidebar, Segment, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-mapkey-icon/dist/L.Icon.Mapkey';
@@ -19,7 +19,7 @@ class MapComponent extends Component {
       geoJsonLayer: null,
       geoJson: null,
       busStopInfo: false,
-      info: null,
+      info: null
     };
     this._mapNode = null;
     this.init = this.init.bind(this);
@@ -34,9 +34,11 @@ class MapComponent extends Component {
   componentDidMount() {
     const { geoJson } = this.props;
     this.setState({
-      geoJson,
+      geoJson
     });
-    if (!this.state.map) this.init(this._mapNode);
+    if (!this.state.map) {
+      this.init(this._mapNode);
+    }
   }
 
   componentDidUpdate() {
@@ -53,13 +55,13 @@ class MapComponent extends Component {
   markerOnClick(e) {
     this.setState({
       busStopInfo: true,
-      info: this.props.getInfo(this.state.geoJson, e.latlng),
+      info: this.props.getInfo(this.state.geoJson, e.latlng)
     });
   }
 
   closeBusInfo() {
     this.setState({
-      busStopInfo: false,
+      busStopInfo: false
     });
   }
 
@@ -73,7 +75,7 @@ class MapComponent extends Component {
           default:
             return false;
         }
-      },
+      }
     });
     geoJsonLayer.addTo(this.state.map);
     this.setState({ geoJsonLayer });
@@ -83,7 +85,7 @@ class MapComponent extends Component {
   zoomToFeature(target) {
     const fitBoundsParams = {
       paddingTopLeft: [200, 10],
-      paddingBottomRight: [10, 10],
+      paddingBottomRight: [10, 10]
     };
     this.state.map.fitBounds(target.getBounds(), fitBoundsParams);
   }
@@ -109,7 +111,9 @@ class MapComponent extends Component {
   }
 
   init(id) {
-    if (this.state.map) return;
+    if (this.state.map) {
+      return;
+    }
     const map = L.map(id, config.map.config);
     const tileLayer = L.tileLayer(config.map.tileLayer.uri, config.map.tileLayer.params).addTo(map);
 
@@ -121,38 +125,29 @@ class MapComponent extends Component {
     const { changeMapState } = this.props;
 
     return (
-      <Sidebar.Pushable as={Segment}>
-        <Sidebar
-          as={Segment}
-          animation="overlay"
-          direction="bottom"
-          visible={busStopInfo}
-          icon="labeled"
-        >
-          {
-            busStopInfo &&
-            <BusStopInfo
-              close={this.closeBusInfo}
-              info={info}
-            />
-          }
-        </Sidebar>
-        <Sidebar.Pusher>
-          <Segment>
-            <div ref={node => this._mapNode = node} id="map" />
-            <Button
-              content="Close"
-              compact={true}
-              color="teal"
-              fluid
-              size="large"
-              onClick={() => {
-                changeMapState();
-              }}
-            />
-          </Segment>
-      </Sidebar.Pusher>
-    </Sidebar.Pushable>
+      <div>
+        {
+          busStopInfo &&
+          <BusStopInfo
+            close={this.closeBusInfo}
+            open={busStopInfo}
+            info={info}
+          />
+        }
+        <div id="map">
+          <div ref={node => this._mapNode = node} />
+        </div>
+        <Button
+          content="Close"
+          compact={true}
+          color="blue"
+          fluid
+          size="large"
+          onClick={() => {
+            changeMapState();
+          }}
+        />
+      </div>
     );
   }
 }

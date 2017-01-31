@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/LogIn';
 import * as errorActions from '../../actions/ErrorDialog';
 
-import LogInFrom from '../../components/Log_In/Log_In';
+import LogInFrom from '../../components/LogIn/LogIn';
 
 class LogIn extends Component {
   checkLogInValues(email, password) {
@@ -21,7 +21,7 @@ class LogIn extends Component {
     return (
       <div>
         <LogInFrom
-          log_in={this.checkLogInValues.bind(this)}
+          logIn={this.checkLogInValues.bind(this)}
         />
       </div>
     );
@@ -30,13 +30,13 @@ class LogIn extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    LogInState: state.logIn,
+    LogInState: state.logIn
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    LogIn: bindActionCreators({ ...actions, ...errorActions }, dispatch),
+    LogIn: bindActionCreators({ ...actions, ...errorActions }, dispatch)
   };
 };
 

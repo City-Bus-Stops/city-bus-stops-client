@@ -50,10 +50,9 @@ let InputForm = (props) => {
                 </Grid.Column>
                 <Grid.Column width="6" textAlign="center">
                   <Button
-                    basic
                     fluid={true}
                     size="large"
-                    color="yellow"
+                    color="grey"
                     onClick={reset}
                   >Clear
                   </Button>
@@ -72,12 +71,12 @@ InputForm.propTypes = {
   To: PropTypes.string,
   searchRoute: PropTypes.func.isRequired,
   personLocation: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired
 };
 
 InputForm = reduxForm({
   form: 'InputForm',
-  validate,
+  validate
 })(InputForm);
 
 InputForm = connect(
@@ -85,7 +84,7 @@ InputForm = connect(
     const { From, To } = selector(state, 'From', 'To');
     return {
       From,
-      To,
+      To
     };
   }
 )(InputForm);

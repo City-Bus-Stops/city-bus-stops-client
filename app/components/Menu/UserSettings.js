@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown, Image } from 'semantic-ui-react';
 import faker from 'faker';
 
-const UserSettings = ({ username, handleClick }) => (
+const UserSettings = ({ username, handleItemClick }) => (
   <Dropdown
     trigger={
       <span>
@@ -27,11 +27,16 @@ const UserSettings = ({ username, handleClick }) => (
       <Dropdown.Item
         icon="settings"
         content="Settings"
+        onClick={() => {
+          handleItemClick('/settings');
+        }}
       />
       <Dropdown.Item
         icon="sign out"
         content="Sign Out"
-        onClick={handleClick}
+        onClick={() => {
+          handleItemClick('/logout');
+        }}
       />
     </Dropdown.Menu>
   </Dropdown>

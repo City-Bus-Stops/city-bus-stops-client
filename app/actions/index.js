@@ -6,7 +6,7 @@ export const inputData = (from, to) => {
     dispatch({
       type: consts.INPUT_DATA,
       from,
-      to,
+      to
     });
     api.fetchRoute(from, to)
       .then((response) => {
@@ -15,15 +15,15 @@ export const inputData = (from, to) => {
       .then((response) => {
         dispatch({
           type: consts.FETCH_ROUTE_SUCCESS,
-          response,
+          response
         });
       })
       .catch((err) => {
         dispatch({
           type: consts.FETCH_ROUTE_FAILURE,
           errors: {
-            FETCH_ROUTE_FAILURE: err.message,
-          },
+            FETCH_ROUTE_FAILURE: err.message
+          }
         });
       });
   };
@@ -32,7 +32,7 @@ export const inputData = (from, to) => {
 export const getAddress = (position, input) => {
   return (dispatch) => {
     dispatch({
-      type: consts.GET_ADDRESS,
+      type: consts.GET_ADDRESS
     });
     api.getAddress(position)
     .then((response) => {
@@ -41,7 +41,7 @@ export const getAddress = (position, input) => {
     .then((response) => {
       dispatch({
         type: consts.GET_ADDRESS_SUCCESS,
-        address: response[0].address,
+        address: response[0].address
       });
       input.onChange(response[0].address);
     })
@@ -49,8 +49,8 @@ export const getAddress = (position, input) => {
       dispatch({
         type: consts.GET_ADDRESS_FAILURE,
         errors: {
-          GET_ADDRESS_FAILURE: err.message,
-        },
+          GET_ADDRESS_FAILURE: err.message
+        }
       });
     });
   };
@@ -59,13 +59,13 @@ export const getAddress = (position, input) => {
 export const getLocation = (input) => {
   return (dispatch) => {
     dispatch({
-      type: consts.GET_LOCATION,
+      type: consts.GET_LOCATION
     });
     api.getLocation()
     .then((position) => {
       dispatch({
         type: consts.GET_LOCATION_SUCCESS,
-        position,
+        position
       });
       dispatch(getAddress(position, input));
     })
@@ -73,8 +73,8 @@ export const getLocation = (input) => {
       dispatch({
         type: consts.GET_LOCATION_FAILURE,
         errors: {
-          GET_LOCATION_FAILURE: 'Denied geolocation. Check location settings in your browser',
-        },
+          GET_LOCATION_FAILURE: 'Denied geolocation. Check location settings in your browser'
+        }
       });
     });
   };

@@ -9,7 +9,7 @@ const loading = store => next => (action) => {
     case consts.POST_SIGN_UP_DATA:
     case consts.GET_POINT_INFO:
       store.dispatch({
-        type: consts.OPEN_LOADING,
+        type: consts.OPEN_LOADING
       });
       return next(action);
     case consts.FETCH_ROUTE_SUCCESS:
@@ -23,7 +23,7 @@ const loading = store => next => (action) => {
     case consts.GET_POINT_INFO_FAILURE:
     case consts.GET_POINT_INFO_SUCCESS:
       store.dispatch({
-        type: consts.CLOSE_LOADING,
+        type: consts.CLOSE_LOADING
       });
       return next(action);
     default:

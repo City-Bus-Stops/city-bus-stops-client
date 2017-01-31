@@ -12,5 +12,5 @@ export default combineReducers({
   getError,
   logIn,
   signUp,
-  loading,
+  loading
 });

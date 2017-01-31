@@ -16,7 +16,7 @@ class Loading extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    LoadingState: state.loading,
+    LoadingState: state.loading
   };
 };
 

@@ -7,7 +7,7 @@ export const signUp = (name, email, password) => {
       type: consts.POST_SIGN_UP_DATA,
       name,
       email,
-      password,
+      password
     });
 
     api.SignUp({ name, email, password })
@@ -18,18 +18,18 @@ export const signUp = (name, email, password) => {
         response.success === true ?
           dispatch({
             type: consts.SIGN_UP_SUCCESS,
-            title: response.title,
+            title: response.title
           })
           : dispatch({
             type: consts.SIGN_UP_FAILURE,
             title: response.title,
-            errors: response.errors,
+            errors: response.errors
           });
       })
       .catch((err) => {
         dispatch({
           type: consts.SIGN_UP_FAILURE,
-          errors: err.message,
+          errors: err.message
         });
       });
   };

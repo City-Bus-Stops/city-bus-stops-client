@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { Segment, Grid, Button } from 'semantic-ui-react';
 
-import InputFiled from '../Sign_Up/InputFiled';
-import PasswordFiled from '../Sign_Up/PasswordFiled';
+import InputFiled from '../SignUp/InputFiled';
+import PasswordFiled from '../SignUp/PasswordFiled';
 import validate from '../../src/utils/LogInFormComponentValidation';
 
 const selector = formValueSelector('LogInForm');
 
-let SignUpForm = ({ Email, Password, log_in, reset }) => (
+let SignUpForm = ({ Email, Password, logIn, reset }) => (
   <Grid centered>
     <Grid.Row>
-      <Grid.Column largeScreen="6" mobile="16" widescreen="6">
+      <Grid.Column largeScreen="4" mobile="16" widescreen="4">
         <Segment raised color="teal">
           <h3>Log in</h3>
           <Grid centered>
@@ -41,17 +41,16 @@ let SignUpForm = ({ Email, Password, log_in, reset }) => (
                   positive
                   size="large"
                   onClick={() => {
-                    log_in(Email, Password);
+                    logIn(Email, Password);
                   }}
                 >Login
                 </Button>
               </Grid.Column>
               <Grid.Column width="6" textAlign="center">
                 <Button
-                  basic
                   fluid={true}
                   size="large"
-                  color="yellow"
+                  color="grey"
                   onClick={reset}
                 >Clear
                 </Button>
@@ -65,12 +64,12 @@ let SignUpForm = ({ Email, Password, log_in, reset }) => (
 );
 
 SignUpForm.propTypes = {
-  log_in: PropTypes.func.isRequired,
+  logIn: PropTypes.func.isRequired
 };
 
 SignUpForm = reduxForm({
   form: 'LogInForm',
-  validate,
+  validate
 })(SignUpForm);
 
 SignUpForm = connect(
@@ -78,7 +77,7 @@ SignUpForm = connect(
     const { Email, Password } = selector(state, 'Email', 'Password');
     return {
       Email,
-      Password,
+      Password
     };
   }
 )(SignUpForm);

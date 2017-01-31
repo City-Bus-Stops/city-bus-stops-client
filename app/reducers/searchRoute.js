@@ -4,7 +4,7 @@ const initialState = {
   From: '',
   To: '',
   Location: {},
-  Address: '',
+  Address: ''
 };
 
 function searchRoutes(state = initialState, action) {
@@ -15,20 +15,20 @@ function searchRoutes(state = initialState, action) {
       return {
         ...state,
         From: action.from,
-        To: action.to,
+        To: action.to
       };
     case consts.GET_LOCATION_SUCCESS:
       return {
         ...state,
         Location: {
           lat: action.position.coords.latitude,
-          lon: action.position.coords.longitude,
-        },
+          lon: action.position.coords.longitude
+        }
       };
     case consts.GET_ADDRESS_SUCCESS:
       return {
         ...state,
-        Address: action.address,
+        Address: action.address
       };
     default:
       return state;

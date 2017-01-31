@@ -10,11 +10,11 @@ import validate from '../../src/utils/SignUpComponentValidation';
 const selector = formValueSelector('SignUpForm');
 
 let SignUpForm = (props) => {
-  const { Email, Name, Password, sign_up, reset } = props;
+  const { Email, Name, Password, signUp, reset } = props;
   return (
     <Grid centered>
       <Grid.Row>
-        <Grid.Column largeScreen="6" mobile="16" widescreen="6">
+        <Grid.Column largeScreen="4" mobile="16" widescreen="4">
           <Segment raised color="teal">
             <h3>Sign Up</h3>
             <Grid centered>
@@ -61,17 +61,16 @@ let SignUpForm = (props) => {
                     positive
                     size="large"
                     onClick={() => {
-                      sign_up(Name, Email, Password);
+                      signUp(Name, Email, Password);
                     }}
                   >Sign Up
                   </Button>
                 </Grid.Column>
                 <Grid.Column width="6" textAlign="center">
                   <Button
-                    basic
                     fluid={true}
                     size="large"
-                    color="yellow"
+                    color="grey"
                     onClick={reset}
                   >Clear
                   </Button>
@@ -86,12 +85,12 @@ let SignUpForm = (props) => {
 };
 
 SignUpForm.propTypes = {
-  sign_up: PropTypes.func.isRequired,
+  signUp: PropTypes.func.isRequired
 };
 
 SignUpForm = reduxForm({
   form: 'SignUpForm',
-  validate,
+  validate
 })(SignUpForm);
 
 SignUpForm = connect(
@@ -100,7 +99,7 @@ SignUpForm = connect(
     return {
       Email,
       Name,
-      Password,
+      Password
     };
   }
 )(SignUpForm);

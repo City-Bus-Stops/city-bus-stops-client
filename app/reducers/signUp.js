@@ -7,17 +7,17 @@ function signUp(state = {}, action) {
         ...state,
         name: action.name,
         email: action.email,
-        password: action.password,
+        password: action.password
       };
     case consts.SIGN_UP_SUCCESS:
       return {
         ...state,
-        response: action.title,
+        response: action.title
       };
     case consts.SIGN_UP_FAILURE:
       return {
         ...state,
-        response: action.title,
+        response: action.title
       };
     default:
       return state;
