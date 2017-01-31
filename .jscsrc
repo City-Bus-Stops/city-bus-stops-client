@@ -1,0 +1,104 @@
+{
+  "disallowSpaceBeforeComma": true,
+  "disallowSpaceBeforeSemicolon": true,
+  "disallowSpacesInsideArrayBrackets": "all",
+  "requireMatchingFunctionName": true,
+  "requireSpaceBeforeObjectValues": true,
+  "requireCommaBeforeLineBreak": true,
+  "requireBlocksOnNewline": 1,
+  "disallowKeywordsOnNewLine": ["else"],
+  "disallowNewlineBeforeBlockStatements": true,
+  "requireSpacesInConditionalExpression": {
+    "afterTest": true,
+    "beforeConsequent": true,
+    "afterConsequent": true,
+    "beforeAlternate": true
+  },
+  "disallowSpacesInCallExpression": true,
+  "disallowEmptyBlocks": true,
+  "requireSpacesInsideObjectBrackets": "all",
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "try",
+    "catch"
+  ],
+  "requireLineFeedAtFileEnd": true,
+  "disallowTrailingWhitespace": true,
+  "disallowTrailingComma": true,
+  "requireSpaceBeforeBlockStatements": true,
+  "validateParameterSeparator": ", ",
+  "requireSpaceBeforeKeywords": [
+    "else",
+    "while",
+    "catch"
+  ],
+  "requireSpaceAfterKeywords": [
+    "do",
+    "for",
+    "if",
+    "else",
+    "switch",
+    "case",
+    "try",
+    "while",
+    "with",
+    "return"
+  ],
+  "requireSpaceBetweenArguments": true,
+  "requireParenthesesAroundIIFE": true,
+  "disallowSpacesInNamedFunctionExpression": {
+      "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInFunctionDeclaration": {
+      "beforeOpeningRoundBrace": true
+  },
+  "disallowSpacesInsideParentheses": true,
+  "disallowQuotedKeysInObjects": false,
+  "disallowSpaceAfterObjectKeys": true,
+  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
+  "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
+  "disallowSpaceBeforeBinaryOperators": [
+      ","
+  ],
+  "requireSpaceBeforeBinaryOperators": [
+       "=",
+       "+",
+       "-",
+       "/",
+       "*",
+       "==",
+       "===",
+       "!=",
+       "!=="
+  ],
+  "requireSpaceAfterBinaryOperators": [
+      "=",
+      "+",
+      "-",
+      "/",
+      "*",
+      "==",
+      "===",
+      "!=",
+      "!=="
+  ],
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "disallowKeywords": [ "with" ],
+  "disallowMultipleLineBreaks": true,
+  "validateLineBreaks": null,
+  "validateQuoteMarks": null,
+  "disallowMixedSpacesAndTabs": "smart",
+  "requireCapitalizedConstructors": true,
+  "requireDotNotation": null,
+  "disallowYodaConditions": true,
+  "excludeFiles": [
+     "app/mixins/*",
+     "node_modules/**",
+     "bower_components/**",
+     "lib/models/example_equipment/**"
+  ]
+}

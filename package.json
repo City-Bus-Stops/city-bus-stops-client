@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --hot --inline",
-    "fix": "./node_modules/.bin/eslint . --fix"
+    "lint": "jscs app && ./node_modules/.bin/eslint .",
+    "fix": "jscs app -x",
+    "precommit": "npm run lint",
+    "prepush": "npm run lint"
   },
   "repository": {
     "type": "git",
     "url": "git+https://KrivichaninDS@bitbucket.org/KrivichaninDS/getmyroute_client.git"
   },
-  "author": "Denis Krivichanin",
+  "author": "Denis Krivichanin <krivichaninds@gmail.com>",
   "license": "MIT",
   "homepage": "https://bitbucket.org/KrivichaninDS/getmyroute_client#readme",
   "dependencies": {
@@ -20,6 +23,7 @@
     "css-loader": "^0.25.0",
     "faker": "^3.1.0",
     "file-loader": "^0.9.0",
+    "jscs": "^3.0.7",
     "json-loader": "^0.5.4",
     "leaflet": "^1.0.1",
     "leaflet-mapkey-icon": "mapshakers/leaflet-mapkey-icon",
