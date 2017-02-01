@@ -2,16 +2,10 @@ import * as consts from '../src/consts';
 
 function logIn(state = {}, action) {
   switch (action.type) {
-    case consts.POST_LOG_IN_DATA:
-      return {
-        ...state,
-        email: action.email,
-        password: action.password
-      };
     case consts.LOG_IN_SUCCESS:
       return {
         ...state,
-        username: action.username
+        ...action
       };
     case consts.LOG_IN_FAILURE:
       return {

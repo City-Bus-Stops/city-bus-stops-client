@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as api from '../src/api';
 import * as consts from '../src/consts';
 
@@ -10,7 +11,7 @@ export const inputData = (from, to) => {
     });
     api.fetchRoute(from, to)
       .then((response) => {
-        return response.json();
+        return response.data;
       })
       .then((response) => {
         dispatch({
@@ -29,21 +30,21 @@ export const inputData = (from, to) => {
   };
 };
 
-export const getAddress = (position, input) => {
+export const getAddress = (lat, lon, input) => {
   return (dispatch) => {
     dispatch({
       type: consts.GET_ADDRESS
     });
-    api.getAddress(position)
+    api.getAddress(lat, lon)
     .then((response) => {
-      return response.json();
+      return _.head(response.data).address;
     })
-    .then((response) => {
+    .then((address) => {
       dispatch({
         type: consts.GET_ADDRESS_SUCCESS,
-        address: response[0].address
+        address
       });
-      input.onChange(response[0].address);
+      input.onChange(address);
     })
     .catch((err) => {
       dispatch({
@@ -65,9 +66,10 @@ export const getLocation = (input) => {
     .then((position) => {
       dispatch({
         type: consts.GET_LOCATION_SUCCESS,
-        position
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
       });
-      dispatch(getAddress(position, input));
+      dispatch(getAddress(position.coords.latitude, position.coords.longitude, input));
     })
     .catch(() => {
       dispatch({

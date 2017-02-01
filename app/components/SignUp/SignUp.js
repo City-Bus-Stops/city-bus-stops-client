@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
-import { Segment, Grid, Button } from 'semantic-ui-react';
+import { Segment, Grid, Button, Message, Icon } from 'semantic-ui-react';
 
 import InputFiled from './InputFiled';
 import PasswordFiled from './PasswordFiled';
@@ -78,6 +78,10 @@ let SignUpForm = (props) => {
               </Grid.Row>
             </Grid>
           </Segment>
+          <Message attached="bottom" warning>
+          <Icon name="help" />
+          Already signed up?&nbsp;<a href="/login">Login here</a>&nbsp;instead.
+        </Message>
         </Grid.Column>
       </Grid.Row>
     </Grid>

@@ -1,13 +1,6 @@
 import * as consts from '../src/consts';
-const initialState = {
-  routes: [],
-  From: '',
-  To: '',
-  Location: {},
-  Address: ''
-};
 
-function searchRoutes(state = initialState, action) {
+function searchRoutes(state = {}, action) {
   switch (action.type) {
     case consts.FETCH_ROUTE_SUCCESS:
       return { ...state, routes: action.response };
@@ -21,8 +14,8 @@ function searchRoutes(state = initialState, action) {
       return {
         ...state,
         Location: {
-          lat: action.position.coords.latitude,
-          lon: action.position.coords.longitude
+          lat: action.lat,
+          lon: action.lon
         }
       };
     case consts.GET_ADDRESS_SUCCESS:

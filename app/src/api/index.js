@@ -1,17 +1,17 @@
+import axios from 'axios';
 import * as consts from '../consts';
 import Auth from '../utils/Auth';
 
 export const fetchRoute = (from, to) => {
-  const config = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({
+  return axios.post(`${consts.SERVER_URL}/route/searchRoute`, {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    data: {
       from,
       to
-    })
-  };
-
-  return fetch(`${consts.SERVER_URL}/route/searchRoute`, config);
+    }
+  });
 };
 
 export const getLocation = () => {
@@ -19,42 +19,30 @@ export const getLocation = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => { resolve(position); },
       (err) => { reject(err); },
-      { enableHighAccuracy: true, timeout: 10000 });
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
   });
 };
 
-export const getAddress = (location) => {
-  const url = new URL(`${consts.SERVER_URL}/address`);
-  const params = {
-    lat: location.coords.latitude,
-    lon: location.coords.longitude
-  }; const config = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' }
-  };
-
-  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-  return fetch(url, config);
+export const getAddress = (lat, lon) => {
+  return axios.get(`${consts.SERVER_URL}/address`, {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    params: {
+      lat,
+      lon
+    }
+  });
 };
 
 export const SignUp = (data) => {
-  const config = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify(data)
-  };
-
-  return fetch(`${consts.SERVER_URL}/auth/signup`, config);
+  return axios.post(`${consts.SERVER_URL}/auth/signup`, data);
 };
 
 export const LogIn = (data) => {
-  const config = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify(data)
-  };
-
-  return fetch(`${consts.SERVER_URL}/auth/login`, config);
+  // return fetch(`${consts.SERVER_URL}/auth/login`, config);
+  return axios.post(`${consts.SERVER_URL}/auth/login`, data);
 };
 
 export const secretRequest = () => {
@@ -66,15 +54,4 @@ export const secretRequest = () => {
     }
   };
   return fetch(`${consts.SERVER_URL}/api/dashboard`, config);
-};
-
-export const getPointInfo = (latlng) => {
-  const url = new URL(`${consts.SERVER_URL}/route/pointInfo`);
-  const config = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' }
-  };
-
-  Object.keys(latlng).forEach(key => url.searchParams.append(key, latlng[key]));
-  return fetch(url, config);
 };

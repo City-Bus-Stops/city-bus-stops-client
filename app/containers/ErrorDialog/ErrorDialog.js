@@ -7,23 +7,22 @@ import ErrorDialogComponent from '../../components/ErrorDialog/ErrorDialogCompon
 
 class ErrorDialog extends Component {
   render() {
-    const { DialogFlag, ErrorMessages } = this.props.ErrorDialogState;
+    const { DialogFlag, ErrorMessages, errorTitle } = this.props.ErrorDialogState;
     const { closeDialog } = this.props.ErrorDialogActions;
     return (
-      <div>
-        <ErrorDialogComponent
-          DialogFlag={DialogFlag}
-          ErrorMessages={ErrorMessages}
-          closeDialog={closeDialog}
-        />
-      </div>
+      <ErrorDialogComponent
+        DialogFlag={DialogFlag}
+        ErrorMessages={ErrorMessages}
+        closeDialog={closeDialog}
+        errorTitle={errorTitle}
+      />
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    ErrorDialogState: state.getError
+    ErrorDialogState: state.Errors
   };
 };
 

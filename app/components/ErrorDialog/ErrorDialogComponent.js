@@ -3,18 +3,21 @@ import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
 import Messages from './ErrorMessages';
 
-const ErrorDialogComponent = ({ closeDialog, ErrorMessages, DialogFlag }) => (
+const ErrorDialogComponent = ({ closeDialog, ErrorMessages, DialogFlag, errorTitle }) => (
   <Modal
     open={DialogFlag}
     onClose={closeDialog}
     closeOnRootNodeClick={false}
     size="large"
   >
-    <Header icon="warning circle" content="Error" />
+    <Header icon="warning circle" content={errorTitle} />
     <Modal.Content>
-      <Messages
-        messages={ErrorMessages}
-      />
+      {
+        ErrorMessages &&
+        <Messages
+          messages={ErrorMessages}
+        />
+      }
     </Modal.Content>
     <Modal.Actions>
       <Button

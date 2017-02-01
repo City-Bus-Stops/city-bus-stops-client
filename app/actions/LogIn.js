@@ -4,13 +4,11 @@ import * as consts from '../src/consts';
 export const logIn = (email, password) => {
   return (dispatch) => {
     dispatch({
-      type: consts.POST_LOG_IN_DATA,
-      email,
-      password
+      type: consts.POST_LOG_IN_DATA
     });
     api.LogIn({ email, password })
       .then((response) => {
-        return response.json();
+        return response.data;
       })
       .then((response) => {
         response.success === true ?
@@ -18,7 +16,9 @@ export const logIn = (email, password) => {
             type: consts.LOG_IN_SUCCESS,
             username: response.user.name,
             token: response.token,
-            title: response.title
+            title: response.title,
+            email,
+            password
           })
         : dispatch({
           type: consts.LOG_IN_FAILURE,
@@ -29,9 +29,7 @@ export const logIn = (email, password) => {
       .catch((err) => {
         dispatch({
           type: consts.LOG_IN_FAILURE,
-          errors: {
-            error: err.message
-          }
+          errors: err.response.data.errors
         });
       });
   };

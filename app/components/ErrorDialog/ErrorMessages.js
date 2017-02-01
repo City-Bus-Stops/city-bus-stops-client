@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { List } from 'semantic-ui-react';
+import voca from 'voca';
 
 const Messages = ({ messages }) => (
   <List divided relaxed size="big">
@@ -7,7 +8,7 @@ const Messages = ({ messages }) => (
       messages && Object.keys(messages).map(index =>
         <List.Item key={index}>
           <List.Content>
-            <List.Header>Some header</List.Header>
+            <List.Header>{voca.capitalize(index)}</List.Header>
             <List.Description>{messages[index]}</List.Description>
           </List.Content>
         </List.Item>

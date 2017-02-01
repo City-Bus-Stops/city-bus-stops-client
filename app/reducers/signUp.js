@@ -4,15 +4,12 @@ function signUp(state = {}, action) {
   switch (action.type) {
     case consts.POST_SIGN_UP_DATA:
       return {
-        ...state,
-        name: action.name,
-        email: action.email,
-        password: action.password
+        ...state
       };
     case consts.SIGN_UP_SUCCESS:
       return {
         ...state,
-        response: action.title
+        ...action
       };
     case consts.SIGN_UP_FAILURE:
       return {
