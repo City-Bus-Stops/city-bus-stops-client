@@ -7,7 +7,7 @@ import BusType from './BusType';
 const BusStopInfo = ({ info, close, open }) => (
   <Modal
     open={open}
-    closeOnEscape={false}
+    closeOnEscape={true}
     closeOnRootNodeClick={false}
     onClose={close}
     closeIcon="close"
