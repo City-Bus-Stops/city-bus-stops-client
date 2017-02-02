@@ -74,6 +74,11 @@ InputForm.propTypes = {
   reset: PropTypes.func.isRequired
 };
 
+InputForm.defaultProps = {
+  From: '',
+  To: ''
+};
+
 InputForm = reduxForm({
   form: 'InputForm',
   validate

@@ -34,4 +34,10 @@ BusStopInfo.propTypes = {
   info: PropTypes.object
 };
 
+BusStopInfo.defaultProps = {
+  info: {
+    name: 'Default Name'
+  }
+};
+
 export default BusStopInfo;

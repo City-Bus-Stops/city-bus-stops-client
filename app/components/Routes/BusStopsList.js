@@ -1,22 +1,26 @@
 import React, { PropTypes } from 'react';
 import { List } from 'semantic-ui-react';
 
-const BusStopList = ({ bustStops }) => (
+const BusStopList = ({ busStops }) => (
   <List relaxed>
     {
-      bustStops ? (bustStops.map(busStop =>
+      (busStops.map(busStop =>
         <List.Item key={busStop.id}>
           <List.Content>
             {busStop.name}
           </List.Content>
         </List.Item>
-      )) : null
+      ))
     }
   </List>
 );
 
 BusStopList.propTypes = {
-  bustStops: PropTypes.arrayOf(PropTypes.object)
+  busStops: PropTypes.arrayOf(PropTypes.object)
+};
+
+BusStopList.defaultProps = {
+  busStops: []
 };
 
 export default BusStopList;

@@ -37,15 +37,13 @@ const Route = ({ arrivalTime, From, To, points, changeMapState }) => (
         <Accordion>
           <Accordion.Title>
             <a>
-              <Icon
-                name="bus"
-              />
+              <Icon name="expand" />
               Show bus stops
             </a>
           </Accordion.Title>
           <Accordion.Content>
             <Card.Content
-              description={<BusStopList bustStops={points} />}
+              description={points && <BusStopList busStops={points} />}
             />
           </Accordion.Content>
         </Accordion>

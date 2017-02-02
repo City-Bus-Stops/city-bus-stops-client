@@ -30,7 +30,7 @@ const getRoutes = (store) => {
           } else {
             cb(null, Login);
           }
-        },
+        }
       },
       {
         path: 'signup',
