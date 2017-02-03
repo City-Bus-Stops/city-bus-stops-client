@@ -1,5 +1,5 @@
 {
-  "name": "getmyroute_client",
+  "name": "Get_route_client",
   "version": "1.0.0",
   "description": "Client side of \"Get_My_Route\" app",
   "main": "index.js",
