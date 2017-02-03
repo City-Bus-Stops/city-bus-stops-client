@@ -22,6 +22,7 @@ let SignUpForm = ({ Email, Password, logIn, reset }) => (
                   name="Email"
                   component={InputFiled}
                   label="Email"
+                  iconType="mail"
                 />
               </Grid.Column>
             </Grid.Row>

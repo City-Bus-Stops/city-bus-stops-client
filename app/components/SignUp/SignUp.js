@@ -24,6 +24,7 @@ let SignUpForm = (props) => {
                     name="Email"
                     component={InputFiled}
                     label="Email"
+                    iconType="mail"
                   />
                 </Grid.Column>
               </Grid.Row>
@@ -33,6 +34,7 @@ let SignUpForm = (props) => {
                     name="Name"
                     component={InputFiled}
                     label="Name"
+                    iconType="user"
                   />
                 </Grid.Column>
               </Grid.Row>
