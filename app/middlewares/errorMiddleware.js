@@ -10,6 +10,7 @@ const errorMiddleware = store => next => (action) => {
     case consts.SIGN_UP_FAILURE:
     case consts.LOG_IN_FAILURE:
     case consts.GET_POINT_INFO_FAILURE:
+    case consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_FAILURE:
       store.dispatch({
         type: consts.ADD_ERROR_MESSAGE,
         errorType: action.type,

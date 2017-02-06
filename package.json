@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
     "lint": "jscs app && ./node_modules/.bin/eslint .",
-    "fix": "jscs app -x",
+    "fix": "jscs app -x && ./node_modules/.bin/eslint . --fix",
     "precommit": "npm run lint",
     "prepush": "npm run lint"
   },

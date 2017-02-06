@@ -55,3 +55,15 @@ export const secretRequest = () => {
   };
   return fetch(`${consts.SERVER_URL}/api/dashboard`, config);
 };
+
+export const getBusScheduleByBusstop = (params) => {
+  return axios.get(`${consts.SERVER_URL}/bus-schedule/${params.id}`, {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    params: {
+      firstPoint: params.firstPointName,
+      lastPoint: params.lastPointName
+    }
+  });
+};

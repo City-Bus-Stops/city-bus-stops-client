@@ -23,6 +23,19 @@ function searchRoutes(state = {}, action) {
         ...state,
         Address: action.address
       };
+    case consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_SUCCESS:
+      return {
+        ...state,
+        points: {
+          id: action.id,
+          data: action.points
+        }
+      };
+    case consts.REMOVE_POINTS:
+      return {
+        ...state,
+        points: []
+      };
     default:
       return state;
   }
