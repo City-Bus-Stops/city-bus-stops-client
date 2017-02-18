@@ -19,11 +19,9 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
-        <SignUpForm
-          signUp={this.checkSignUpValues.bind(this)}
-        />
-      </div>
+      <SignUpForm
+        signUp={this.checkSignUpValues.bind(this)}
+      />
     );
   }
 }

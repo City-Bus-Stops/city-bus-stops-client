@@ -19,11 +19,9 @@ class LogIn extends Component {
 
   render() {
     return (
-      <div>
-        <LogInFrom
-          logIn={this.checkLogInValues.bind(this)}
-        />
-      </div>
+      <LogInFrom
+        logIn={this.checkLogInValues.bind(this)}
+      />
     );
   }
 }

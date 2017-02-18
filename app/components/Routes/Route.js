@@ -22,7 +22,7 @@ const Route = props => (
               props.changeMapState();
             }}
           >
-            <Icon name="street view" color="teal" />
+            <Icon name="street view" color="blue" />
           </Button>
           <Header as="h4" dividing color="grey">
             Bus number - {props.busNumber}
@@ -44,7 +44,7 @@ const Route = props => (
             });
           }}
         >
-          <Icon name="expand" />
+          <Icon name="expand" color="black" />
           <Header.Content>
             <a>Show bus stops</a>
           </Header.Content>

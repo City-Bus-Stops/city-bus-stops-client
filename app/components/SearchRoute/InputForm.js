@@ -11,7 +11,7 @@ const selector = formValueSelector('InputForm');
 let InputForm = (props) => {
   const { From, To, searchRoute, reset, personLocation } = props;
   return (
-    <Grid centered>
+    <Grid centered padded>
       <Grid.Row>
         <Grid.Column largeScreen="6" mobile="16" widescreen="6">
           <Segment raised color="teal">
@@ -50,9 +50,10 @@ let InputForm = (props) => {
                 </Grid.Column>
                 <Grid.Column width="6" textAlign="center">
                   <Button
-                    fluid={true}
+                    fluid
+                    basic
                     size="large"
-                    color="grey"
+                    color="red"
                     onClick={reset}
                   >Clear
                   </Button>

@@ -73,34 +73,30 @@ class SearchRoute extends Component {
   render() {
     const { From, To, routes, points } = this.props.SearchRouteState;
     const { showMap } = this.state;
-
-    return (
-      <div>
+    return _.isEqual(showMap, true) ? (
+        <MapComponent
+          geoJson={geoJson}
+          getInfo={this.getInfo}
+          changeMapState={this.changeMapState}
+        />
+      ) :
+      (
+        <div>
+        <InputForm
+          personLocation={this.personLocation}
+          searchRoute={this.searchRoute}
+        />
         {
-          _.isEqual(showMap, true) ?
-            <MapComponent
-              geoJson={geoJson}
-              getInfo={this.getInfo}
-              changeMapState={this.changeMapState}
-            /> :
-            <div>
-              <InputForm
-                personLocation={this.personLocation}
-                searchRoute={this.searchRoute}
-              />
-              {
-                From && To && routes &&
-                <Routes
-                  From={From}
-                  To={To}
-                  routes={routes}
-                  points={points}
-                  changeMapState={this.changeMapState}
-                  getBusScheduleByBusStop={this.getBusScheduleByBusStop}
-                  removePoints={this.removePoints}
-                />
-              }
-            </div>
+          From && To && routes &&
+          <Routes
+            From={From}
+            To={To}
+            routes={routes}
+            points={points}
+            changeMapState={this.changeMapState}
+            getBusScheduleByBusStop={this.getBusScheduleByBusStop}
+            removePoints={this.removePoints}
+          />
         }
       </div>
     );
