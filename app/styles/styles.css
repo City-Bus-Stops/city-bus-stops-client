@@ -38,3 +38,12 @@ body, html {
 .dropdown-menu {
   z-index: 1000;
 }
+
+.menu-container {
+  height: 5vh;
+}
+
+.main-container {
+  height: 95vh;
+  background-image: url('../src/images/background.png');
+}
