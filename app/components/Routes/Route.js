@@ -1,54 +1,83 @@
 import React, { PropTypes } from 'react';
-import { Card, Grid, Button, Icon, Accordion } from 'semantic-ui-react';
+import { Card, Grid, Button, Icon, Label, Header, Modal } from 'semantic-ui-react';
+import _ from 'lodash';
 
 import BusStopList from './BusStopsList';
 
-const Route = ({ arrivalTime, From, To, points, changeMapState }) => (
+const Route = props => (
   <Grid.Column>
-    <Card
-      fluid
-      color="blue"
-    >
+    <Card fluid color="blue">
       <Card.Content>
-         <Card.Header>
-           {points[0].name}: {arrivalTime}
-           <Button
-             size="medium"
-             icon
-             basic
-             circular
-             floated="right"
-             onClick={() => {
-               changeMapState();
-             }}
-           >
-             <Icon name="street view" color="teal" />
-           </Button>
+        <Card.Header>
+          <Label as="a" color="blue" ribbon size="large" horizontal>
+            {props.bustStopName}: {props.arrivalTime}
+          </Label>
+          <Button
+            size="medium"
+            icon
+            basic
+            circular
+            floated="right"
+            onClick={() => {
+              props.changeMapState();
+            }}
+          >
+            <Icon name="street view" color="blue" />
+          </Button>
+          <Header as="h4" dividing color="grey">
+            Bus number - {props.busNumber}
+          </Header>
         </Card.Header>
+        <Card.Description>
+          {`${props.From} - ${props.To}`}
+        </Card.Description>
       </Card.Content>
-      <Card.Content
-        meta={
-          <p>
-            {`${From} - ${To}`}
-          </p>
+      <Card.Content extra>
+        <Header
+          as="h5"
+          color="blue"
+          onClick={() => {
+            props.getBusScheduleByBusStop({
+              id: props.id,
+              firstPointName: props.firstPointName,
+              lastPointName: props.lastPointName
+            });
+          }}
+        >
+          <Icon name="expand" color="black" />
+          <Header.Content>
+            <a>Show bus stops</a>
+          </Header.Content>
+        </Header>
+        {
+          !_.isEmpty(props.points) &&
+          <Modal
+            closeIcon="close"
+            dimmer="blurring"
+            closeOnEscape={true}
+            closeOnRootNodeClick={false}
+            defaultOpen={!_.isEmpty(props.points)}
+            onClose={props.removePoints}
+          >
+
+            <Modal.Header>
+              <Header as="h1" color="blue">
+                {props.bustStopName}
+              </Header>
+            </Modal.Header>
+            <Modal.Content>
+              <Header as="h2" color="blue">
+                Bus number - {props.busNumber}
+                <Header.Subheader>
+                  Bus stops count: {props.points.length}
+                </Header.Subheader>
+              </Header>
+              <Modal.Description>
+                <BusStopList busStops={props.points} />
+              </Modal.Description>
+            </Modal.Content>
+          </Modal>
         }
-      />
-      <Card.Content extra className="card-extra-component">
-        <Accordion>
-          <Accordion.Title>
-            <a>
-              <Icon
-                name="bus"
-              />
-              Show bus stops
-            </a>
-          </Accordion.Title>
-          <Accordion.Content>
-            <Card.Content
-              description={<BusStopList bustStops={points} />}
-            />
-          </Accordion.Content>
-        </Accordion>
       </Card.Content>
     </Card>
   </Grid.Column>

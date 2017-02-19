@@ -10,14 +10,16 @@ const InputFiled = ({ input, label, meta: { touched, error }, personLocation }) 
       placeholder={label}
       {...input}
     >
-    <Button
-      size="small"
-      icon
-      basic
-      onClick={() => { personLocation(input); }}
-    >
-      <Icon name="marker" color="red" size="large" />
-    </Button>
+      <Button
+        size="small"
+        icon
+        basic
+        onClick={() => {
+          personLocation(input);
+        }}
+      >
+        <Icon name="marker" color="green" size="large" />
+      </Button>
       <input />
     </Input>
     {touched && error &&

@@ -10,7 +10,7 @@ import validate from '../../src/utils/LogInFormComponentValidation';
 const selector = formValueSelector('LogInForm');
 
 let SignUpForm = ({ Email, Password, logIn, reset }) => (
-  <Grid centered>
+  <Grid centered padded>
     <Grid.Row>
       <Grid.Column largeScreen="4" mobile="16" widescreen="4">
         <Segment raised color="teal">
@@ -22,6 +22,7 @@ let SignUpForm = ({ Email, Password, logIn, reset }) => (
                   name="Email"
                   component={InputFiled}
                   label="Email"
+                  iconType="mail"
                 />
               </Grid.Column>
             </Grid.Row>
@@ -37,7 +38,7 @@ let SignUpForm = ({ Email, Password, logIn, reset }) => (
             <Grid.Row columns="12">
               <Grid.Column width="6" textAlign="center">
                 <Button
-                  fluid={true}
+                  fluid
                   positive
                   size="large"
                   onClick={() => {
@@ -48,9 +49,10 @@ let SignUpForm = ({ Email, Password, logIn, reset }) => (
               </Grid.Column>
               <Grid.Column width="6" textAlign="center">
                 <Button
-                  fluid={true}
+                  fluid
+                  basic
                   size="large"
-                  color="grey"
+                  color="red"
                   onClick={reset}
                 >Clear
                 </Button>

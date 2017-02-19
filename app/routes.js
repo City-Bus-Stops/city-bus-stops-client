@@ -1,9 +1,12 @@
+import { browserHistory } from 'react-router';
+
 import Base from './components/Base';
 import SearchRoute from './containers/SearchRoute/SearchRoute';
 import Login from './containers/LogIn/LogIn';
 import SignUp from './containers/SignUp/SignUp';
 import NotFoundPage from './components/NotFoundPage';
 import PersonalPage from './containers/PersonalPage/PersonalPage';
+import Auth from './src/utils/Auth';
 
 import { logOut } from './actions/LogIn';
 
@@ -21,7 +24,13 @@ const getRoutes = (store) => {
       },
       {
         path: 'login',
-        component: Login
+        getComponent: (nextState, cb) => {
+          if (Auth.isUserAuthenticated()) {
+            browserHistory.push('/');
+          } else {
+            cb(null, Login);
+          }
+        }
       },
       {
         path: 'signup',

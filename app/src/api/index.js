@@ -3,11 +3,11 @@ import * as consts from '../consts';
 import Auth from '../utils/Auth';
 
 export const fetchRoute = (from, to) => {
-  return axios.post(`${consts.SERVER_URL}/route/searchRoute`, {
+  return axios.get(`${consts.SERVER_URL}/route/searchRoute`, {
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
     },
-    data: {
+    params: {
       from,
       to
     }
@@ -54,4 +54,16 @@ export const secretRequest = () => {
     }
   };
   return fetch(`${consts.SERVER_URL}/api/dashboard`, config);
+};
+
+export const getBusScheduleByBusstop = (params) => {
+  return axios.get(`${consts.SERVER_URL}/bus-schedule/${params.id}`, {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    params: {
+      firstPoint: params.firstPointName,
+      lastPoint: params.lastPointName
+    }
+  });
 };

@@ -22,6 +22,8 @@ class SearchRoute extends Component {
     this.changeMapState = this.changeMapState.bind(this);
     this.personLocation = this.personLocation.bind(this);
     this.searchRoute = this.searchRoute.bind(this);
+    this.getBusScheduleByBusStop = this.getBusScheduleByBusStop.bind(this);
+    this.removePoints = this.removePoints.bind(this);
   }
 
   getGeoJsonById() {
@@ -31,11 +33,27 @@ class SearchRoute extends Component {
     return geoJson;
   }
 
+  getBusScheduleByBusStop(props) {
+    const { getBusScheduleByBusstop } = this.props.SearchRoutes;
+    getBusScheduleByBusstop(props);
+  }
+
   getInfo(geoJson, latlng) {
     const idx = _.findIndex(this.getGeoJsonById(), (point) => {
       return _.isEqual(point.geometry.coordinates, [latlng.lng, latlng.lat]);
     });
     return geoJson[idx].info || {};
+  }
+
+  changeMapState() {
+    this.setState({
+      showMap: !this.state.showMap
+    });
+  }
+
+  personLocation(input) {
+    const { getLocation } = this.props.SearchRoutes;
+    getLocation(input);
   }
 
   searchRoute(from, to) {
@@ -47,45 +65,38 @@ class SearchRoute extends Component {
     inputData(from, to);
   }
 
-  personLocation(input) {
-    const { getLocation } = this.props.SearchRoutes;
-    getLocation(input);
-  }
-
-  changeMapState() {
-    this.setState({
-      showMap: !this.state.showMap
-    });
+  removePoints() {
+    const { removePoints } = this.props.SearchRoutes;
+    removePoints();
   }
 
   render() {
-    const { From, To, routes } = this.props.SearchRouteState;
+    const { From, To, routes, points } = this.props.SearchRouteState;
     const { showMap } = this.state;
-
-    return (
-      <div>
+    return _.isEqual(showMap, true) ? (
+        <MapComponent
+          geoJson={geoJson}
+          getInfo={this.getInfo}
+          changeMapState={this.changeMapState}
+        />
+      ) :
+      (
+        <div>
+        <InputForm
+          personLocation={this.personLocation}
+          searchRoute={this.searchRoute}
+        />
         {
-          _.isEqual(showMap, true) ?
-            <MapComponent
-              geoJson={geoJson}
-              getInfo={this.getInfo}
-              changeMapState={this.changeMapState}
-            /> :
-            <div>
-              <InputForm
-                personLocation={this.personLocation}
-                searchRoute={this.searchRoute}
-              />
-              {
-                From && To && routes &&
-                <Routes
-                  From={From}
-                  To={To}
-                  routes={routes}
-                  changeMapState={this.changeMapState}
-                />
-              }
-            </div>
+          From && To && routes &&
+          <Routes
+            From={From}
+            To={To}
+            routes={routes}
+            points={points}
+            changeMapState={this.changeMapState}
+            getBusScheduleByBusStop={this.getBusScheduleByBusStop}
+            removePoints={this.removePoints}
+          />
         }
       </div>
     );

@@ -8,6 +8,7 @@ const loading = store => next => (action) => {
     case consts.POST_LOG_IN_DATA:
     case consts.POST_SIGN_UP_DATA:
     case consts.GET_POINT_INFO:
+    case consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME:
       store.dispatch({
         type: consts.OPEN_LOADING
       });
@@ -22,6 +23,8 @@ const loading = store => next => (action) => {
     case consts.SIGN_UP_SUCCESS:
     case consts.GET_POINT_INFO_FAILURE:
     case consts.GET_POINT_INFO_SUCCESS:
+    case consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_SUCCESS:
+    case consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_FAILURE:
       store.dispatch({
         type: consts.CLOSE_LOADING
       });

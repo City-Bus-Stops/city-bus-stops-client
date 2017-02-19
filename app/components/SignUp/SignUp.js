@@ -12,7 +12,7 @@ const selector = formValueSelector('SignUpForm');
 let SignUpForm = (props) => {
   const { Email, Name, Password, signUp, reset } = props;
   return (
-    <Grid centered>
+    <Grid centered padded>
       <Grid.Row>
         <Grid.Column largeScreen="4" mobile="16" widescreen="4">
           <Segment raised color="teal">
@@ -24,6 +24,7 @@ let SignUpForm = (props) => {
                     name="Email"
                     component={InputFiled}
                     label="Email"
+                    iconType="mail"
                   />
                 </Grid.Column>
               </Grid.Row>
@@ -33,6 +34,7 @@ let SignUpForm = (props) => {
                     name="Name"
                     component={InputFiled}
                     label="Name"
+                    iconType="user"
                   />
                 </Grid.Column>
               </Grid.Row>
@@ -68,9 +70,10 @@ let SignUpForm = (props) => {
                 </Grid.Column>
                 <Grid.Column width="6" textAlign="center">
                   <Button
-                    fluid={true}
+                    fluid
+                    basic
                     size="large"
-                    color="grey"
+                    color="red"
                     onClick={reset}
                   >Clear
                   </Button>

@@ -1,6 +1,10 @@
 import * as consts from '../src/consts';
+import Auth from '../src/utils/Auth';
+const initState = {
+  username: Auth.getUserName()
+};
 
-function logIn(state = {}, action) {
+function logIn(state = initState, action) {
   switch (action.type) {
     case consts.LOG_IN_SUCCESS:
       return {

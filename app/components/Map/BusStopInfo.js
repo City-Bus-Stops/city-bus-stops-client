@@ -7,7 +7,7 @@ import BusType from './BusType';
 const BusStopInfo = ({ info, close, open }) => (
   <Modal
     open={open}
-    closeOnEscape={false}
+    closeOnEscape={true}
     closeOnRootNodeClick={false}
     onClose={close}
     closeIcon="close"
@@ -32,6 +32,12 @@ const BusStopInfo = ({ info, close, open }) => (
 
 BusStopInfo.propTypes = {
   info: PropTypes.object
+};
+
+BusStopInfo.defaultProps = {
+  info: {
+    name: 'Default Name'
+  }
 };
 
 export default BusStopInfo;

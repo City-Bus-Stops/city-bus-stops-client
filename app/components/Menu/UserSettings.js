@@ -4,6 +4,7 @@ import faker from 'faker';
 
 const UserSettings = ({ username, handleItemClick }) => (
   <Dropdown
+    className="dropdown-menu"
     trigger={
       <span>
         <Image avatar src={faker.internet.avatar()} />

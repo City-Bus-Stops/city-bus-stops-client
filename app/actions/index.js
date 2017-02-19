@@ -81,3 +81,33 @@ export const getLocation = (input) => {
     });
   };
 };
+
+export const getBusScheduleByBusstop = (props) => {
+  return (dispatch) => {
+    dispatch({
+      type: consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME
+    });
+    api.getBusScheduleByBusstop(props)
+      .then((response) => {
+        dispatch({
+          type: consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_SUCCESS,
+          id: response.data.id,
+          points: response.data.points
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_FAILURE,
+          errors: err.response.data.errors
+        });
+      });
+  };
+};
+
+export const removePoints = () => {
+  return (dispatch) => {
+    dispatch({
+      type: consts.REMOVE_POINTS
+    });
+  };
+};
