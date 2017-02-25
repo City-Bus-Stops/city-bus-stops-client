@@ -9,11 +9,11 @@ import validate from '../../src/utils/LogInFormComponentValidation';
 
 const selector = formValueSelector('LogInForm');
 
-let SignUpForm = ({ Email, Password, logIn, reset }) => (
+let SignUpForm = ({ Email, Password, logIn, reset, invalid }) => (
   <Grid centered padded>
     <Grid.Row>
       <Grid.Column largeScreen="4" mobile="16" widescreen="4">
-        <Segment raised color="teal">
+        <Segment raised piled>
           <h3>Log in</h3>
           <Grid centered>
             <Grid.Row>
@@ -38,6 +38,7 @@ let SignUpForm = ({ Email, Password, logIn, reset }) => (
             <Grid.Row columns="12">
               <Grid.Column width="6" textAlign="center">
                 <Button
+                  disabled={invalid}
                   fluid
                   positive
                   size="large"

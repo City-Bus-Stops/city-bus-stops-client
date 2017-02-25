@@ -14,7 +14,7 @@ let InputForm = (props) => {
     <Grid centered padded>
       <Grid.Row>
         <Grid.Column largeScreen="6" mobile="16" widescreen="6">
-          <Segment raised color="teal">
+          <Segment raised piled>
             <Grid centered>
               <Grid.Row>
                 <Grid.Column>

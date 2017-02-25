@@ -10,12 +10,12 @@ import validate from '../../src/utils/SignUpComponentValidation';
 const selector = formValueSelector('SignUpForm');
 
 let SignUpForm = (props) => {
-  const { Email, Name, Password, signUp, reset } = props;
+  const { Email, Name, Password, signUp, reset, invalid } = props;
   return (
     <Grid centered padded>
       <Grid.Row>
         <Grid.Column largeScreen="4" mobile="16" widescreen="4">
-          <Segment raised color="teal">
+          <Segment raised piled attached>
             <h3>Sign Up</h3>
             <Grid centered>
               <Grid.Row>
@@ -59,6 +59,7 @@ let SignUpForm = (props) => {
               <Grid.Row columns="12">
                 <Grid.Column width="6" textAlign="center">
                   <Button
+                    disabled={invalid}
                     fluid={true}
                     positive
                     size="large"
@@ -82,9 +83,9 @@ let SignUpForm = (props) => {
             </Grid>
           </Segment>
           <Message attached="bottom" warning>
-          <Icon name="help" />
-          Already signed up?&nbsp;<a href="/login">Login here</a>&nbsp;instead.
-        </Message>
+            <Icon name="help" />
+            Already signed up? <a href="/login">Login here</a> instead.
+          </Message>
         </Grid.Column>
       </Grid.Row>
     </Grid>
