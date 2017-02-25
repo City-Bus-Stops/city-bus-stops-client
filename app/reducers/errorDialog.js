@@ -3,23 +3,19 @@ const initialState = {
   DialogFlag: false
 };
 
-function Errors(state = initialState, action) {
+function errors(state = initialState, action) {
   switch (action.type) {
     case consts.ADD_ERROR_MESSAGE:
       return {
         ...state,
-        errorType: action.errorType,
-        ErrorMessages: Object.assign({}, state.ErrorMessages, action.errors),
-        DialogFlag: true,
-        errorTitle: action.errorTitle
+        ErrorMessages: Object.assign([], state.ErrorMessages, action.errors),
+        DialogFlag: true
       };
-    case consts.OPEN_DIALOG:
-      return { ...state, DialogFlag: true };
-    case consts.CLOSE_DIALOG:
-      return { DialogFlag: false, ErrorMessages: {} };
+    case consts.CLOSE_ERROR_DIALOG:
+      return { DialogFlag: false, ErrorMessages: [] };
     default:
       return state;
   }
 }
 
-export default Errors;
+export default errors;

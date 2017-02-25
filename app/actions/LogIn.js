@@ -20,11 +20,11 @@ export const logIn = (email, password) => {
             email,
             password
           })
-        : dispatch({
-          type: consts.LOG_IN_FAILURE,
-          title: response.title,
-          errors: response.message
-        });
+          : dispatch({
+            type: consts.LOG_IN_FAILURE,
+            title: response.title,
+            errors: response.messages
+          });
       })
       .catch((err) => {
         dispatch({

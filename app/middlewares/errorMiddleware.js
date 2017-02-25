@@ -13,9 +13,7 @@ const errorMiddleware = store => next => (action) => {
     case consts.GET_BUS_SCHEDULE_BY_BUSSTOP_NAME_FAILURE:
       store.dispatch({
         type: consts.ADD_ERROR_MESSAGE,
-        errorType: action.type,
         errors: action.errors,
-        errorTitle: action.title
       });
       return next(action);
     default:

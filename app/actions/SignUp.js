@@ -22,7 +22,6 @@ export const signUp = (name, email, password) => {
           })
           : dispatch({
             type: consts.SIGN_UP_FAILURE,
-            title: response.data.title,
             errors: response.data.errors
           });
       })
@@ -30,7 +29,6 @@ export const signUp = (name, email, password) => {
         dispatch({
           type: consts.SIGN_UP_FAILURE,
           errors: err.response.data.errors,
-          title: err.response.data.title
         });
       });
   };

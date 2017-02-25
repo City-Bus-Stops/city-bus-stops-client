@@ -22,7 +22,7 @@ class ErrorDialog extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ErrorDialogState: state.Errors
+    ErrorDialogState: state.errors
   };
 };
 

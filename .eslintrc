@@ -44,6 +44,7 @@
     "react/jsx-no-bind": 0,
     "react/prop-types": 0,
     "react/jsx-boolean-value": 0,
-    "react/no-did-mount-set-state": 0
+    "react/no-did-mount-set-state": 0,
+    "react/no-array-index-key": 0
   }
 }
