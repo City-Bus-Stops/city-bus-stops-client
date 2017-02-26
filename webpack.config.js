@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NodeEnvironmentPlugin(),
   ],
   devServer: {
     port: 8080,
@@ -25,26 +25,23 @@ module.exports = {
   },
   devtool: 'eval-cheap-module-source-map',
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'source-map-loader'
-    }],
     loaders: [{
+      test: /\.js$/,
+      enforce: 'pre',
+      use: ['source-map-loader'],
+    }, {
       test: /\.jsx?$/,
-      loader: ['babel'],
+      use: ['babel-loader'],
       exclude: /node_modules/,
-      query: {
-        presets: ['react', 'es2015']
-      }
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader!postcss-loader'
+      use: ['style-loader', 'css-loader', 'postcss-loader'],
     }, {
       test: /\.json/,
-      loader: 'json-loader'
+      use: ['json-loader'],
     }, {
       test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|woff2)$/i,
-      loader: 'file'
+      use: ['file-loader'],
     }]
   }
 };
