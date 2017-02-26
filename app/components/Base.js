@@ -6,7 +6,7 @@ import Loading from '../containers/Loading/Loading';
 
 const Base = ({ ...props }) => (
 <div>
-    <AppMenu className="menu-container"  />
+    <AppMenu className="menu-container" />
     <div className="main-container">
       {props.children}
     </div>
