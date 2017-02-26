@@ -12,7 +12,7 @@ const ErrorDialogComponent = ({ closeDialog, ErrorMessages, DialogFlag }) => (
     dimmer="blurring"
     closeIcon="close"
   >
-    <Header color="red" icon="warning circle" content="Error" />
+    <Header as="h1" color="red" icon="warning circle" content="Error" />
     <Modal.Content>
       {
         ErrorMessages &&

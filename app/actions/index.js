@@ -22,9 +22,10 @@ export const inputData = (from, to) => {
       .catch((err) => {
         dispatch({
           type: consts.FETCH_ROUTE_FAILURE,
-          errors: {
-            FETCH_ROUTE_FAILURE: err.message
-          }
+          errors: [{
+            type: 'Fetch Route Failure',
+            messages: [err.message],
+          }]
         });
       });
   };
@@ -49,9 +50,10 @@ export const getAddress = (lat, lon, input) => {
     .catch((err) => {
       dispatch({
         type: consts.GET_ADDRESS_FAILURE,
-        errors: {
-          GET_ADDRESS_FAILURE: err.message
-        }
+        errors: [{
+          type: 'Get Address Failure',
+          messages: [err.message],
+        }]
       });
     });
   };
@@ -74,9 +76,10 @@ export const getLocation = (input) => {
     .catch(() => {
       dispatch({
         type: consts.GET_LOCATION_FAILURE,
-        errors: {
-          GET_LOCATION_FAILURE: 'Denied geolocation. Check location settings in your browser'
-        }
+        errors: [{
+          type: 'Get Location Failure',
+          messages: ['Denied geolocation. Check location settings in your browser'],
+        }]
       });
     });
   };
