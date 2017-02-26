@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --progress",
     "lint": "jscs app && ./node_modules/.bin/eslint .",
     "fix": "jscs app -x && ./node_modules/.bin/eslint . --fix",
     "precommit": "npm run lint",
@@ -45,7 +45,7 @@
     "semantic-ui-react": "^0.64.4",
     "source-map-loader": "^0.1.5",
     "voca": "^1.2.0",
-    "webpack": "^2.1.0-beta.22",
+    "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.12.2"

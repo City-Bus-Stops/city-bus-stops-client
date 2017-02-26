@@ -47,3 +47,9 @@ body, html {
   height: 95vh;
   background-image: url('../src/images/background.png');
 }
+
+.error-messages > div.message{
+  background: inherit;
+  box-shadow: initial;
+  padding-left: 0;
+}

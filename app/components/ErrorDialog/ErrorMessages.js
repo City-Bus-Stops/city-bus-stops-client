@@ -1,23 +1,22 @@
 import React, { PropTypes } from 'react';
-import { List } from 'semantic-ui-react';
-import voca from 'voca';
+import { Message } from 'semantic-ui-react';
 
-const Messages = ({ messages }) => (
-  <List divided relaxed size="big">
+const Messages = ({ errors }) => (
+  <div className="error-messages">
     {
-      messages && Object.keys(messages).map(index =>
-        <List.Item key={index}>
-          <List.Content>
-            <List.Header>{voca.capitalize(index)}</List.Header>
-            <List.Description>{messages[index]}</List.Description>
-          </List.Content>
-        </List.Item>
+      errors && errors.map((error, index) =>
+        <Message
+          key={index}
+          size="big"
+          header={error.type}
+          list={error.messages}
+        />
       )}
-  </List>
+  </div>
 );
 
 Messages.propTypes = {
-  messages: PropTypes.object.isRequired
+  errors: PropTypes.array.isRequired
 };
 
 export default Messages;

@@ -1,33 +1,26 @@
 import React from 'react';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Header, Modal } from 'semantic-ui-react';
 
 import Messages from './ErrorMessages';
 
-const ErrorDialogComponent = ({ closeDialog, ErrorMessages, DialogFlag, errorTitle }) => (
+const ErrorDialogComponent = ({ closeDialog, ErrorMessages, DialogFlag }) => (
   <Modal
     open={DialogFlag}
     onClose={closeDialog}
     closeOnRootNodeClick={false}
-    size="large"
+    size="small"
+    dimmer="blurring"
+    closeIcon="close"
   >
-    <Header icon="warning circle" content={errorTitle} />
+    <Header as="h1" color="red" icon="warning circle" content="Error" />
     <Modal.Content>
       {
         ErrorMessages &&
         <Messages
-          messages={ErrorMessages}
+          errors={ErrorMessages}
         />
       }
     </Modal.Content>
-    <Modal.Actions>
-      <Button
-        color="green"
-        size="medium"
-        onClick={closeDialog}
-      >
-        <Icon name="checkmark" /> Ok
-      </Button>
-    </Modal.Actions>
   </Modal>
 );
 

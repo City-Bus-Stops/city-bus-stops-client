@@ -4,7 +4,7 @@ import Base from './components/Base';
 import SearchRoute from './containers/SearchRoute/SearchRoute';
 import Login from './containers/LogIn/LogIn';
 import SignUp from './containers/SignUp/SignUp';
-import NotFoundPage from './components/NotFoundPage';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import PersonalPage from './containers/PersonalPage/PersonalPage';
 import Auth from './src/utils/Auth';
 
